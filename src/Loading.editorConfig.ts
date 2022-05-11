@@ -1,8 +1,8 @@
 import { Properties, StructurePreviewProps, transformGroupsIntoTabs } from "./piw-utils-internal";
-import { GraphPreviewProps } from "../typings/GraphProps";
+import { LoadingPreviewProps } from "../typings/LoadingProps";
 
 export function getProperties(
-    values: GraphPreviewProps,
+    values: LoadingPreviewProps,
     defaultProperties: Properties,
     platform: "web" | "desktop"
 ): Properties {
@@ -12,7 +12,7 @@ export function getProperties(
     }
     return defaultProperties;
 }
-export function getPreview(values: GraphPreviewProps): StructurePreviewProps | null {
+export function getPreview(values: LoadingPreviewProps): StructurePreviewProps | null {
     console.log(values);
     return null;
 }
