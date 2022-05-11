@@ -1,18 +1,20 @@
 import { createElement, useMemo } from "react";
 import { LoadingContainerProps } from "../typings/LoadingProps";
 import { ValueStatus } from "mendix";
+import { Loading } from "@alifd/next";
+import '@alifd/next/lib/loading/style';
 
 export default function (props: LoadingContainerProps) {
-    console.log(eval("{a:1}"));
-    const value = useMemo(() => {
-        if (props.attribute && props.attribute.status === ValueStatus.Available) {
-            return props.attribute.value;
+    const isLoading = useMemo(() => {
+        if (props.IsLoading && props.IsLoading.status === ValueStatus.Available) {
+            return props.IsLoading.value!;
         }
-    }, [props.attribute]);
+        return true;
+    }, [props.IsLoading]);
 
     return (
-        <div>
-            hello {props.sampleText} and your value is {value}
-        </div>
+        <Loading visible={isLoading} tip="加载中...">
+            {props.content}
+        </Loading>
     );
 }
