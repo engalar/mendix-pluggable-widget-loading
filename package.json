@@ -6,13 +6,13 @@
   "packagePath": "mendixcn",
   "author": "wengao.liu@siemens.com",
   "dependencies": {
-    "ahooks": "^2.10.14",
+    "ahooks": "^3.3.10",
     "classnames": "^2.2.6",
     "@alifd/next": "^1.25.36"
   },
   "scripts": {
     "m": "npm install -g rollup prettier eslint",
-    "testProject": "cmd /c git clone https://gitee.com/engalar/mendix-testproject-960.git --depth=1 ./tests/testProject && rd /s /q  .\\tests\\testProject\\.git",
+    "testProject": "cmd /c git clone https://gitee.com/engalar/mendix-testproject-960.git --depth=1 ./tests/testProject && shx rm -rf .\\tests\\testProject\\.git",
     "r": "node ./script/rename.js",
     "start": "pluggable-widgets-tools start:web",
     "build": "pluggable-widgets-tools build:web",
@@ -23,7 +23,7 @@
     "openTestProject": "start tests/testProject/testProject.mpr",
     "backupTestProject": "cmd /c (if not exist dummy\\deployment\\data\\database\\hsqldb\\default (mkdir dummy\\deployment\\data\\database\\hsqldb\\default) else (echo skip 1)) && (if not exist dummy\\widgets (mkdir dummy\\widgets) else (echo skip 2)) && copy tests\\testProject\\testProject.mpr dummy\\ /Y && copy tests\\testProject\\deployment\\data\\database\\hsqldb\\default\\default.script dummy\\deployment\\data\\database\\hsqldb\\default\\",
     "postbackupTestProject": "cmd /c copy tests\\testProject\\widgets\\mendixcn.Loading.mpk dummy\\widgets\\",
-    "restoreTestProject": "cmd /c xcopy dummy tests\\testProject /E /Y"
+    "restoreTestProject": "shx cp -r dummy/* tests/testProject/"
   },
   "copyright": "2020 Mendix Technology BV",
   "engines": {
